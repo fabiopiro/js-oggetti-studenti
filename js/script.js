@@ -14,8 +14,11 @@ var studente = {
 };
 
 // Stampare a schermo attraverso un ciclo for-in tutte le proprietà dell'oggetto.
+console.log("--- --- --- Proprietà dell'oggetto 'studente'  --- --- ---");
+
 for(var key in studente) {
     console.log(studente[key]);
+    document.getElementById("studente").innerHTML += " " + studente[key];
 }
 
 // Creare un array di oggetti di studenti.
@@ -50,15 +53,16 @@ var studentiArray = [
         età: 26,
     },
 ];
-
+console.log("--- --- --- Array Studenti --- --- ---");
 console.log(studentiArray);
 
 // Ciclare su tutti gli studenti e stampare per ognuno di essi, nome e cognome.
-console.log("Stampa nomi e cognomi --- --- ---");
+console.log("--- --- --- Nomi e Cognomi --- --- ---");
 
-for (var i = 0; i<studentiArray.length; i++) {
+for (var i = 0; i < studentiArray.length; i++) {
 
     console.log(studentiArray[i].nome + " " + studentiArray[i].cognome);
+    document.getElementById("array_studenti").innerHTML += "<li>" + studentiArray[i].nome + " " + studentiArray[i].cognome + "</li>";
 
 }
 
@@ -70,15 +74,31 @@ var studenteUtente = {
 };
 
 // Prompt
-studenteUtente.nome = prompt("Inserisci nome");
+do {
+    studenteUtente.nome = prompt("Inserisci nome");
+} while (!isNaN(studenteUtente.nome));
 
-studenteUtente.cognome = prompt("Inserisci cognome");
+document.getElementById("nuovo_studente").innerHTML = studenteUtente.nome + " ";
 
-studenteUtente.età = prompt("Inserisci età");
+do {
+    studenteUtente.cognome = prompt("Inserisci cognome");
+} while (!isNaN(studenteUtente.cognome));
 
+document.getElementById("nuovo_studente").innerHTML += studenteUtente.cognome + " ";
+
+do {
+    studenteUtente.età = parseInt(prompt("Inserisci età"));
+} while (isNaN(studenteUtente.età));
+
+document.getElementById("nuovo_studente").innerHTML += "(età: " + studenteUtente.età + ")";
+
+
+console.log("--- --- --- Nuovo Studente --- --- ---");
 console.log(studenteUtente);
 
+// Push del nuovo studente
+console.log("--- --- --- Push Nuovo Studente --- --- ---");
 
-studentiArray.push(studenteUtente)
+studentiArray.push(studenteUtente);
 console.log(studentiArray);
 
